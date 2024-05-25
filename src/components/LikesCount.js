@@ -1,13 +1,25 @@
-import React, { useState, useCallback } from "react";
+import React, { Component } from "react";
 
-const LikesCount = ({ children }) => {
-  const [count, setCount] = useState(0);
+class LikesCount extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
 
-  const incrementCount = useCallback(() => {
-    setCount((prevCount) => prevCount + 1);
-  }, []);
+  incrementCount() {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
+  }
 
-  return children(count, incrementCount);
-};
+  render() {
+    const { children } = this.props;
+    const { count } = this.state;
+    return children(count, this.incrementCount);
+  }
+}
 
 export default LikesCount;
