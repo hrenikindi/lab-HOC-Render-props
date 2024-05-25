@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from "react";
+import LikesCount from "./LikesCount";
 
-export default function LikeImage() {
-
-  const [likeImageCounter, setLikeImageCounter] = useState(0);
-
-  const handleLikeImageCount = ()=>{
-    setLikeImageCounter(likeImageCounter+1);
-  }
-
+function LikeImage() {
   return (
-    <div>
-      <button onClick={handleLikeImageCount}>Like Image {likeImageCounter}</button>
-    </div>
-  )
+    <LikesCount>
+      {(likeImageCounts, incrementCount) => (
+        <div>
+          <button onClick={incrementCount}>Like Image {likeImageCounts}</button>
+        </div>
+      )}
+    </LikesCount>
+  );
 }
+
+export default LikeImage;
