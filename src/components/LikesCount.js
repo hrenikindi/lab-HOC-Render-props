@@ -9,11 +9,9 @@ class LikesCount extends Component {
     this.incrementCount = this.incrementCount.bind(this);
   }
 
-  incrementCount() {
-    this.setState((prevState) => ({
-      count: prevState.count + 1,
-    }));
-  }
+incrementCount() {
+  this.setState({ count: this.state.count + 1 });
+}
 
   render() {
     const { children } = this.props;
